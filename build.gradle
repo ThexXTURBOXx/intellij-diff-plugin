@@ -17,12 +17,12 @@
 plugins {
     id 'idea'
     id 'java'
-    id 'org.jetbrains.intellij' version '1.17.0'
-    id 'org.jetbrains.grammarkit' version '2022.3.2.1'
+    id 'org.jetbrains.intellij' version '1.17.3'
+    id 'org.jetbrains.grammarkit' version '2022.3.2.2'
 }
 
 wrapper {
-    gradleVersion = '8.5'
+    gradleVersion = '8.7'
 }
 
 Properties releaseProperties = new Properties()
@@ -43,14 +43,14 @@ java {
 }
 
 // version of this plugin
-version = '2.1.13'
+version = '2.1.14'
 
 // IDE version that will be used for compilation, unit tests, and for :runIde task
-intellij.version = '241-EAP-SNAPSHOT'
+intellij.version = '242-EAP-SNAPSHOT'
 
 patchPluginXml {
-    sinceBuild = '241'
-    untilBuild = '241.*'
+    sinceBuild = '242'
+    untilBuild = '242.*'
 
     // language=HTML prefix=<body> suffix=</body>
     pluginDescription = '''
@@ -74,6 +74,10 @@ patchPluginXml {
 
     // language=HTML prefix=<body> suffix=</body>
     changeNotes = '''
+        <h5>2.1.14</h5>
+        <ul>
+          <li>Update compatibility for 2024.2+ product lines</li>
+        </ul>
         <h5>2.1.13</h5>
         <ul>
           <li>Update compatibility for 2024.1+ product lines</li>
@@ -154,21 +158,19 @@ patchPluginXml {
 
 def namespacePath = 'de/thomasrosenau/diffplugin'
 
-def genSrcPath = 'src/main/generated-java'
-File genSrc = file genSrcPath
+File genSrc = file 'src/main/generated-java'
 sourceSets.main.java.srcDir genSrc
 idea.module.generatedSourceDirs += genSrc
 
 tasks {
     generateLexer {
         sourceFile.set(file("src/main/java/${namespacePath}/lexer/Diff.flex"))
-        targetDir.set("${genSrcPath}/${namespacePath}")
-        targetClass.set("DiffLexer")
+        targetOutputDir.set(new File(genSrc, namespacePath))
         purgeOldFiles.set(true)
     }
     generateParser {
         sourceFile.set(file("src/main/java/${namespacePath}/parser/Diff.bnf"))
-        targetRoot.set(genSrcPath)
+        targetRootOutputDir.set(genSrc)
         pathToParser.set("DiffParser.java")
         pathToPsiRoot.set("${namespacePath}/psi")
         purgeOldFiles.set(true)
@@ -180,7 +182,7 @@ compileJava {
 }
 
 clean {
-    delete genSrcPath
+    delete genSrc
 }
 
 def intellijPublishToken = project.ext.releaseProps['intellijPublishToken'] ?:
