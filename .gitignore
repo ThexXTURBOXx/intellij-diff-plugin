@@ -37,3 +37,4 @@ run/
 build/
 out/
 src/main/generated-java/
+.intellijPlatform/
