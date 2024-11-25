@@ -1,5 +1,5 @@
 /*
- Copyright 2023 Thomas Rosenau
+ Copyright 2020 Thomas Rosenau
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -31,6 +31,6 @@ public abstract class DiffContextHunkBase extends DiffNavigationItem {
         PsiElement toNode = ((DiffContextHunk) this).getContextHunkTo().getFirstChild();
         String toText = toNode.getText();
         return "@@ -" + fromText.substring(4, fromText.length() - 5) + " +" + toText.substring(4, toText.length() - 5) +
-                " @@";
+               " @@";
     }
 }

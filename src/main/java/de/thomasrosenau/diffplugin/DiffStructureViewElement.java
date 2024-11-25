@@ -1,5 +1,5 @@
 /*!
-Copyright 2023 Thomas Rosenau
+Copyright 2020 Thomas Rosenau
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,9 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 package de.thomasrosenau.diffplugin;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.structureView.StructureViewTreeElement;
@@ -33,6 +30,8 @@ import de.thomasrosenau.diffplugin.psi.impl.DiffGitHeaderImpl;
 import de.thomasrosenau.diffplugin.psi.impl.DiffMultiDiffPartImpl;
 import de.thomasrosenau.diffplugin.psi.impl.DiffNormalHunkImpl;
 import de.thomasrosenau.diffplugin.psi.impl.DiffUnifiedHunkImpl;
+import java.util.ArrayList;
+import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 public class DiffStructureViewElement implements StructureViewTreeElement, SortableTreeElement {

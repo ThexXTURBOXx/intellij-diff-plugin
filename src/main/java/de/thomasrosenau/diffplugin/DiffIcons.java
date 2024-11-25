@@ -1,5 +1,5 @@
 /*
- Copyright 2023 Thomas Rosenau
+ Copyright 2020 Thomas Rosenau
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,9 +16,8 @@
 
 package de.thomasrosenau.diffplugin;
 
-import javax.swing.*;
-
 import com.intellij.openapi.util.IconLoader;
+import javax.swing.Icon;
 
 public class DiffIcons {
     public static final Icon FILE = IconLoader.getIcon("/META-INF/pluginIcon.svg", DiffIcons.class);

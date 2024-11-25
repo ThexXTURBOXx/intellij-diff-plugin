@@ -1,5 +1,5 @@
 /*
- Copyright 2023 Thomas Rosenau
+ Copyright 2020 Thomas Rosenau
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -77,7 +77,7 @@ intellijPlatform {
         <p>Does not support the formats: side-by-side, diff3, ed, if-else, RCS.</p>
         <br/>
         <hr/>
-        <p>Copyright 2023 Thomas Rosenau</p>
+        <p>Copyright 2020 Thomas Rosenau</p>
         <p>Licensed under the Apache License, Version 2.0 (the "License"); you may not use this software except in
             compliance with the License. You may obtain a copy of the License at</p>
         <br/>

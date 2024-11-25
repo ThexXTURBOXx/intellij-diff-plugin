@@ -1,5 +1,5 @@
 /*
- Copyright 2023 Thomas Rosenau
+ Copyright 2020 Thomas Rosenau
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,20 +16,19 @@
 
 package de.thomasrosenau.diffplugin.highlighter;
 
-import java.util.Map;
-import javax.swing.*;
-
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.options.colors.AttributesDescriptor;
 import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.openapi.options.colors.ColorSettingsPage;
 import de.thomasrosenau.diffplugin.DiffIcons;
+import java.util.Map;
+import javax.swing.Icon;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 class DiffColorSettingsPage implements ColorSettingsPage {
-    private static final AttributesDescriptor[] DESCRIPTORS = new AttributesDescriptor[] {
+    private static final AttributesDescriptor[] DESCRIPTORS = new AttributesDescriptor[]{
             new AttributesDescriptor("Changed lines//Inserted line", DiffSyntaxHighlighter.INSERTED),
             new AttributesDescriptor("Changed lines//Deleted line", DiffSyntaxHighlighter.DELETED),
             new AttributesDescriptor("Changed lines//Changed line", DiffSyntaxHighlighter.CHANGED),
