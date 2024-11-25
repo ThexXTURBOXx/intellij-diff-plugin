@@ -1,3 +1,8 @@
+<!--
+This file has been changed by Nico Mexis under the terms of the Apache-2.0 license.
+Original code is by Thomas Rosenau.
+-->
+
 # intellij-diff-plugin
 
 Syntax highlighting for .diff and .patch files in IntelliJ IDEA

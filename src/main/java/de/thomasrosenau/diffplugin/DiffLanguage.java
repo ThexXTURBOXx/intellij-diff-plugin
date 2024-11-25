@@ -1,4 +1,7 @@
 /*
+ This file has been changed by Nico Mexis under the terms of the Apache-2.0 license.
+ Original code is by Thomas Rosenau.
+
  Copyright 2020 Thomas Rosenau
 
  Licensed under the Apache License, Version 2.0 (the "License");
