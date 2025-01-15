@@ -16,12 +16,12 @@ and [other JetBrains IDEs](https://www.jetbrains.com/products.html).
 
 ## Development
 
-This project was built using Java 17 and Gradle 8.3.
+This project was built using Java 21 and Gradle 8.12.
 
 In order to open this project in IntelliJ IDEA, follow these steps:
 
-1. Install [Java 17 JDK](https://adoptium.net/de/)
-1. [Define](https://www.jetbrains.com/help/idea/sdk.html#define-sdk) a project SDK named *17*. If you have a Java 17 SDK
+1. Install [Java 21 JDK](https://adoptium.net/de/)
+1. [Define](https://www.jetbrains.com/help/idea/sdk.html#define-sdk) a project SDK named *21*. If you have a Java 21 SDK
    already, you may choose to rename or clone it.
 1. Open the project and wait for IntelliJ to download the required libraries.  
    (This may take a long time, because several hundred MBs are downloaded.)
