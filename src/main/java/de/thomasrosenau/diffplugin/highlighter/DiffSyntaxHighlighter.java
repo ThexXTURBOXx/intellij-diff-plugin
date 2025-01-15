@@ -1,5 +1,8 @@
 /*
- Copyright 2023 Thomas Rosenau
+ This file has been changed by Nico Mexis under the terms of the Apache-2.0 license.
+ Original code is by Thomas Rosenau.
+
+ Copyright 2020 Thomas Rosenau
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -16,8 +19,6 @@
 
 package de.thomasrosenau.diffplugin.highlighter;
 
-import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey;
-
 import com.intellij.execution.ui.ConsoleViewContentType;
 import com.intellij.lexer.Lexer;
 import com.intellij.openapi.diff.DiffColors;
@@ -29,6 +30,8 @@ import com.intellij.psi.tree.IElementType;
 import de.thomasrosenau.diffplugin.lexer.DiffLexerAdapter;
 import de.thomasrosenau.diffplugin.psi.DiffTypes;
 import org.jetbrains.annotations.NotNull;
+
+import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey;
 
 class DiffSyntaxHighlighter extends SyntaxHighlighterBase {
     public static final TextAttributesKey COMMAND = createTextAttributesKey("PATCH_COMMAND",
@@ -59,19 +62,19 @@ class DiffSyntaxHighlighter extends SyntaxHighlighterBase {
 
     private boolean isInsertedLine(IElementType tokenType) {
         return tokenType.equals(DiffTypes.CONTEXT_INSERTED_LINE) || tokenType.equals(DiffTypes.UNIFIED_INSERTED_LINE) ||
-                tokenType.equals(DiffTypes.NORMAL_TO_LINE);
+               tokenType.equals(DiffTypes.NORMAL_TO_LINE);
     }
 
     private boolean isDeletedLine(IElementType tokenType) {
         return tokenType.equals(DiffTypes.CONTEXT_DELETED_LINE) || tokenType.equals(DiffTypes.UNIFIED_DELETED_LINE) ||
-                tokenType.equals(DiffTypes.NORMAL_FROM_LINE);
+               tokenType.equals(DiffTypes.NORMAL_FROM_LINE);
     }
 
     private boolean isHunkHead(IElementType tokenType) {
         return tokenType.equals(DiffTypes.CONTEXT_FROM_LINE_NUMBERS) ||
-                tokenType.equals(DiffTypes.CONTEXT_TO_LINE_NUMBERS) ||
-                tokenType.equals(DiffTypes.UNIFIED_LINE_NUMBERS) || tokenType.equals(DiffTypes.NORMAL_ADD_COMMAND) ||
-                tokenType.equals(DiffTypes.NORMAL_DELETE_COMMAND) || tokenType.equals(DiffTypes.NORMAL_CHANGE_COMMAND);
+               tokenType.equals(DiffTypes.CONTEXT_TO_LINE_NUMBERS) ||
+               tokenType.equals(DiffTypes.UNIFIED_LINE_NUMBERS) || tokenType.equals(DiffTypes.NORMAL_ADD_COMMAND) ||
+               tokenType.equals(DiffTypes.NORMAL_DELETE_COMMAND) || tokenType.equals(DiffTypes.NORMAL_CHANGE_COMMAND);
     }
 
     private boolean isSeparator(IElementType tokenType) {
@@ -80,7 +83,7 @@ class DiffSyntaxHighlighter extends SyntaxHighlighterBase {
 
     private boolean isFileName(IElementType tokenType) {
         return tokenType.equals(DiffTypes.CONTEXT_FROM_LABEL) || tokenType.equals(DiffTypes.CONTEXT_TO_LABEL) ||
-                tokenType.equals(DiffTypes.UNIFIED_FROM_LABEL) || tokenType.equals(DiffTypes.UNIFIED_TO_LABEL);
+               tokenType.equals(DiffTypes.UNIFIED_FROM_LABEL) || tokenType.equals(DiffTypes.UNIFIED_TO_LABEL);
     }
 
     @NotNull

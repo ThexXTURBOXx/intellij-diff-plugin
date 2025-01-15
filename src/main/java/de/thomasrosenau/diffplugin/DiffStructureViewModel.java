@@ -1,5 +1,8 @@
 /*!
-Copyright 2023 Thomas Rosenau
+This file has been changed by Nico Mexis under the terms of the Apache-2.0 license.
+Original code is by Thomas Rosenau.
+
+Copyright 2020 Thomas Rosenau
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -32,7 +35,7 @@ import de.thomasrosenau.diffplugin.psi.DiffUnifiedHunk;
 import org.jetbrains.annotations.NotNull;
 
 public class DiffStructureViewModel extends StructureViewModelBase implements StructureViewModel.ElementInfoProvider {
-    private static final Class<?>[] CLASSES = new Class[] {DiffContextHunk.class, DiffNormalHunk.class,
+    private static final Class<?>[] CLASSES = new Class[]{DiffContextHunk.class, DiffNormalHunk.class,
             DiffUnifiedHunk.class, DiffGitHeader.class, DiffGitBinaryPatch.class, DiffGitDiff.class,
             DiffMultiDiffPart.class};
 

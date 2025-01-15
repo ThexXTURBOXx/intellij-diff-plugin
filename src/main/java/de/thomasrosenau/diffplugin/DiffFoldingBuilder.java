@@ -1,5 +1,8 @@
 /*
- Copyright 2023 Thomas Rosenau
+ This file has been changed by Nico Mexis under the terms of the Apache-2.0 license.
+ Original code is by Thomas Rosenau.
+
+ Copyright 2020 Thomas Rosenau
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -15,9 +18,6 @@
  */
 
 package de.thomasrosenau.diffplugin;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.folding.FoldingBuilderEx;
@@ -36,13 +36,15 @@ import de.thomasrosenau.diffplugin.psi.DiffGitHeaderBase;
 import de.thomasrosenau.diffplugin.psi.DiffMultiDiffPart;
 import de.thomasrosenau.diffplugin.psi.DiffNormalHunk;
 import de.thomasrosenau.diffplugin.psi.DiffUnifiedHunk;
+import java.util.ArrayList;
+import java.util.Collection;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 class DiffFoldingBuilder extends FoldingBuilderEx implements PossiblyDumbAware {
     @Override
     public FoldingDescriptor @NotNull [] buildFoldRegions(@NotNull PsiElement root, @NotNull Document document,
-            boolean quick) {
+                                                          boolean quick) {
         ArrayList<FoldingDescriptor> result = new ArrayList<>();
         buildFileFoldingRegions(root, result);
         buildHunkFoldingRegions(root, result);
@@ -93,15 +95,20 @@ class DiffFoldingBuilder extends FoldingBuilderEx implements PossiblyDumbAware {
     @Override
     public String getPlaceholderText(@NotNull ASTNode node) {
         PsiElement psiNode = node.getPsi();
-        if (psiNode instanceof DiffMultiDiffPart) {
-            PsiElement commandNode = ((DiffMultiDiffPart) psiNode).getConsoleCommand();
+        switch (psiNode) {
+        case DiffMultiDiffPart diffMultiDiffPart -> {
+            PsiElement commandNode = diffMultiDiffPart.getConsoleCommand();
             return commandNode.getText();
-        } else if (psiNode instanceof DiffGitHeaderBase) {
-            return ((DiffGitHeaderBase) psiNode).getPlaceholderText();
-        } else if (psiNode instanceof DiffContextHunkBase) {
-            return ((DiffContextHunkBase) psiNode).getPlaceholderText();
-        } else {
-            return psiNode.getFirstChild().getText();
+        }
+        case DiffGitHeaderBase diffGitHeaderBase -> {
+            return diffGitHeaderBase.getPlaceholderText();
+        }
+        case DiffContextHunkBase diffContextHunkBase -> {
+            return diffContextHunkBase.getPlaceholderText();
+        }
+        case null, default -> {
+            return psiNode == null ? "" : psiNode.getFirstChild().getText();
+        }
         }
     }
 
