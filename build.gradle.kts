@@ -18,6 +18,7 @@
  */
 
 import org.jetbrains.changelog.Changelog
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 import java.io.FileInputStream
 import java.util.*
 
@@ -67,7 +68,7 @@ dependencies {
 
         jetbrainsRuntime()
 
-        instrumentationTools()
+        testFramework(TestFrameworkType.Bundled)
         pluginVerifier()
         zipSigner()
     }
