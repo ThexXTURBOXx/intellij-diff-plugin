@@ -64,7 +64,7 @@ class DiffFoldingBuilder extends FoldingBuilderEx implements PossiblyDumbAware {
     }
 
     private void buildHunkFoldingRegions(@NotNull PsiElement root, @NotNull ArrayList<FoldingDescriptor> result) {
-        Collection<PsiElement> hunks = PsiTreeUtil.findChildrenOfType(root, DiffContextHunk.class);
+        Collection<PsiElement> hunks = new ArrayList<>(PsiTreeUtil.findChildrenOfType(root, DiffContextHunk.class));
         hunks.addAll(PsiTreeUtil.findChildrenOfType(root, DiffUnifiedHunk.class));
         hunks.addAll(PsiTreeUtil.findChildrenOfType(root, DiffNormalHunk.class));
         hunks.addAll(PsiTreeUtil.findChildrenOfType(root, DiffGitBinaryPatch.class));
