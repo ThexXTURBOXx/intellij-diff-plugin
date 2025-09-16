@@ -1,7 +1,7 @@
 [versions]
-changelog = "2.2.1"
+changelog = "2.4.0"
 grammarKit = "2022.3.2.2"
-intelliJPlatform = "2.5.0"
+intelliJPlatform = "2.9.0"
 kotlin = "2.1.20"
 
 [plugins]
