@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+## [2.2.6] - 2026-10-21
+
+### Fixed
+
+- Update compatibility for 2026.3+ product lines
+- Fix compatibility with JDK 21 (that is, older product lines)
+
 ## [2.2.5] - 2026-07-17
 
 ### Fixed
@@ -166,7 +173,8 @@
 
 - Icon changed
 
-[Unreleased]: https://github.com/ThexXTURBOXx/intellij-diff-plugin/compare/v2.2.5...HEAD
+[Unreleased]: https://github.com/ThexXTURBOXx/intellij-diff-plugin/compare/v2.2.6...HEAD
+[2.2.6]: https://github.com/ThexXTURBOXx/intellij-diff-plugin/compare/v2.2.5...v2.2.6
 [2.2.5]: https://github.com/ThexXTURBOXx/intellij-diff-plugin/compare/v2.2.4...v2.2.5
 [2.2.4]: https://github.com/ThexXTURBOXx/intellij-diff-plugin/compare/v2.2.3...v2.2.4
 [2.2.3]: https://github.com/ThexXTURBOXx/intellij-diff-plugin/compare/v2.2.2...v2.2.3
