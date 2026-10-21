@@ -35,7 +35,7 @@ version = providers.gradleProperty("pluginVersion").get()
 // Set the JVM language level used to build the project.
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -68,7 +68,9 @@ dependencies {
 
         jetbrainsRuntime()
 
-        testFramework(TestFrameworkType.Bundled)
+        testImplementation("junit:junit:4.13.2")
+        testFramework(TestFrameworkType.Platform)
+        testFramework(TestFrameworkType.Plugin.Java)
         pluginVerifier()
         zipSigner()
     }
@@ -113,7 +115,12 @@ intellijPlatform {
 
         ideaVersion {
             sinceBuild = providers.gradleProperty("pluginSinceBuild")
-            untilBuild = providers.gradleProperty("pluginUntilBuild")
+            var ub = providers.gradleProperty("pluginUntilBuild")
+            if (ub.orElse("").get().isNotBlank()) {
+                untilBuild = ub
+            } else {
+                untilBuild = provider { null }
+            }
         }
     }
 
@@ -180,30 +187,23 @@ intellijPlatformTesting {
 
 val namespacePath = "de/thomasrosenau/diffplugin"
 
-val genSrc = File("src/main/generated-java")
-idea.module.generatedSourceDirs.add(genSrc)
-
 tasks {
-    sourceSets.main {
-        java.srcDir(genSrc)
-    }
     generateLexer {
         sourceFile.set(File("src/main/java/${namespacePath}/lexer/Diff.flex"))
-        targetOutputDir.set(File(genSrc, namespacePath))
-        purgeOldFiles.set(true)
     }
     generateParser {
         sourceFile.set(File("src/main/java/${namespacePath}/parser/Diff.bnf"))
-        targetRootOutputDir.set(genSrc)
-        pathToParser.set("DiffParser.java")
-        pathToPsiRoot.set("${namespacePath}/psi")
-        purgeOldFiles.set(true)
     }
     compileJava {
-        dependsOn(generateLexer, generateParser)
         options.compilerArgs.addAll(arrayOf("-Xlint:deprecation", "-Xlint:unchecked"))
     }
-    clean {
-        delete(genSrc)
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir(tasks.generateLexer)
+            srcDir(tasks.generateParser)
+        }
     }
 }
