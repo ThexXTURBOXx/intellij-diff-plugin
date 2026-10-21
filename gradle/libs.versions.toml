@@ -1,9 +1,8 @@
 [versions]
 changelog = "2.5.0"
-grammarKit = "2023.3.0.3"
-intelliJPlatform = "2.17.0"
+intelliJPlatform = "2.19.0"
 
 [plugins]
 changelog = { id = "org.jetbrains.changelog", version.ref = "changelog" }
-grammarKit = { id = "org.jetbrains.grammarkit", version.ref = "grammarKit" }
+grammarKit = { id = "org.jetbrains.intellij.platform.grammarkit", version.ref = "intelliJPlatform" }
 intelliJPlatform = { id = "org.jetbrains.intellij.platform", version.ref = "intelliJPlatform" }
