@@ -68,7 +68,9 @@ dependencies {
 
         jetbrainsRuntime()
 
-        testFramework(TestFrameworkType.Bundled)
+        testImplementation("junit:junit:4.13.2")
+        testFramework(TestFrameworkType.Platform)
+        testFramework(TestFrameworkType.Plugin.Java)
         pluginVerifier()
         zipSigner()
     }
@@ -113,7 +115,12 @@ intellijPlatform {
 
         ideaVersion {
             sinceBuild = providers.gradleProperty("pluginSinceBuild")
-            untilBuild = providers.gradleProperty("pluginUntilBuild")
+            var ub = providers.gradleProperty("pluginUntilBuild")
+            if (ub.orElse("").get().isNotBlank()) {
+                untilBuild = ub
+            } else {
+                untilBuild = provider { null }
+            }
         }
     }
 
